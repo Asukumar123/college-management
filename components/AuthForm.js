@@ -1,3 +1,5 @@
+export default function AuthForm() {
+  // Component logic
 const handleSubmit = async (e) => {
     e.preventDefault();
     const endpoint = type === 'login' ? '/api/auth/login' : '/api/auth/signup';
@@ -19,4 +21,4 @@ const handleSubmit = async (e) => {
       alert(`Error: ${data.error}`);
     }
   };
-  
+}
