@@ -41,7 +41,7 @@ npx prisma migrate dev
 npx prisma db seed
 ```
 
-### 4. Run the app
+### 5. Run the app
 
 ```
 npm run dev
