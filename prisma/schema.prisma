@@ -1,0 +1,65 @@
+// schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model College {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  score             Int                  @default(0) // Score should be in the range of 1-1000
+  cityId            Int
+  stateId           Int
+  placements        CollegePlacement[]
+  courses           CollegeWiseCourse[]
+  
+  city              City                 @relation(fields: [cityId], references: [id])
+  state             State                @relation(fields: [stateId], references: [id])
+}
+
+model CollegePlacement {
+  id                Int                 @id @default(autoincrement())
+  collegeId        Int
+  year              Int
+  highestPlacement  Float?
+  averagePlacement  Float?
+  medianPlacement   Float?
+  placementRate     Float?
+
+  college           College              @relation(fields: [collegeId], references: [id])
+}
+
+model CollegeWiseCourse {
+  id                Int                 @id @default(autoincrement())
+  collegeId        Int
+  courseName        String
+  courseDuration    String
+  courseFee         Float
+
+  college           College              @relation(fields: [collegeId], references: [id])
+}
+
+model City {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  colleges          College[]
+}
+
+model State {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  colleges          College[]
+}
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
