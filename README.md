@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# College Management System
 
-## Getting Started
+A Next.js application with Prisma and PostgreSQL for managing colleges, courses, and user authentication.
 
-First, run the development server:
+## Prerequisites
 
+- Node.js (v16+)
+- PostgreSQL
+- Prisma CLI
+
+## Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repository/college-management.git  
+   cd college-management  
+
+**2.Install dependencies** :
+```
+npm install
+``` 
+
+### 3. Configure database connection
+
+Add the connection URLs that you received after setting up the Vercel Postgres (or Neon) database to the [`.env`](./.env) file. 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+POSTGRES_PRISMA_URL="your-db-connection-string-with-pgbouncer=true"
+POSTGRES_URL_NON_POOLING="your-db-connection-string"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The values may look similar to this:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+POSTGRES_PRISMA_URL="postgres://default:password@ep-wild-voice-61367780-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?pgbouncer=true&connect_timeout=15"
+POSTGRES_URL_NON_POOLING="postgres://default:password@ep-wild-voice-61367780.us-east-1.postgres.vercel-storage.com:5432/verceldb"
+```
+### 4. Create tables & seed database
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+npx prisma migrate dev
+npx prisma db seed
+```
 
-## Learn More
+### 4. Run the app
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
