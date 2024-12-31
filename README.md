@@ -8,6 +8,7 @@ A Next.js application with Prisma and PostgreSQL for managing colleges, courses,
 - PostgreSQL
 - Prisma CLI
 
+
 ## Setup
 
 1. **Clone the repository**:
@@ -45,5 +46,11 @@ npx prisma db seed
 
 ```
 npm run dev
+```
+
+## Swagger Api docs link
+
+```
+https://app.swaggerhub.com/apis/ASUKUMARUG21CS/college-management/1.0.0
 ```
 
