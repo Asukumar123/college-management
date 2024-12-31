@@ -10,12 +10,12 @@ A Next.js application with Prisma and PostgreSQL for managing colleges, courses,
 
 ## Setup
 
-1. **Clone the repository**:
+## 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-repository/college-management.git  
    cd college-management  
 
-**2.Install dependencies** :
+## 2. **Install dependencies** :
 ```
 npm install
 ``` 
